@@ -1,0 +1,202 @@
+/* Globala variabler */
+:root {
+  --color-primary: #e74c3c;
+  --color-primary-hover: #c0392b;
+  --color-text: #222;
+  --color-background: #f5f5f5;
+  --border-radius: 6px;
+  --wheel-size: 280px;
+}
+
+/* Grundstilar (mobile-först) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+header {
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+header p {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+}
+
+/* Main staplas vertikalt på mobil */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.5rem 1rem;
+}
+
+.section-form,
+.section-wheel {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px #0000001a;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Formulär */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+input[type="text"] {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  width: 100%;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+#meal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#meal-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Hjulet */
+.wheel-wrapper {
+  position: relative;
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+  margin: 0 auto 1rem;
+}
+
+/* Pilen - en CSS-triangel som pekar nedåt mot hjulet */
+#pointer {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 20px solid var(--color-text);
+  z-index: 1;
+}
+
+#wheel {
+  width: var(--wheel-size);
+  height: var(--wheel-size);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px #00000033;
+}
+
+/* Legend och resultat */
+#color-legend {
+  list-style: none;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#color-legend li {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+#spin-button {
+  display: block;
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+#result {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  min-height: 2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Desktop: sektionerna bredvid varandra */
+@media (min-width: 600px) {
+  main {
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-form,
+  .section-wheel {
+    flex: 1;
+  }
+
+  form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  input[type="text"] {
+    flex: 1;
+  }
+}
