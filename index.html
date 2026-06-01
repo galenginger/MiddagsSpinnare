@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Middagsspinnaren</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Middagsspinnaren</h1>
+    <p>Kan du inte bestämma? Låt hjulet välja!</p>
+  </header>
+
+  <main>
+
+    <!-- Formulärsektion: lägga till och lista måltider -->
+    <section class="section-form">
+      <h2>Lägg till en måltid</h2>
+      <form id="meal-form">
+        <label for="meal-input">Måltid:</label>
+        <input type="text" id="meal-input" placeholder="T.ex. Pizza" />
+        <button type="submit">Lägg till</button>
+      </form>
+      <ul id="meal-list"></ul>
+    </section>
+
+    <!-- Hjulsektion: snurrhjul och resultat -->
+    <section class="section-wheel">
+      <h2>Snurra hjulet</h2>
+      <div class="wheel-wrapper">
+        <!-- Statisk pil, hjulet roterar under den -->
+        <div id="pointer"></div>
+        <div id="wheel"></div>
+      </div>
+      <ul id="color-legend"></ul>
+      <button id="spin-button">Snurra!</button>
+      <div id="result"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Gjord av Sebastian 2026</p>
+  </footer>
+
+</body>
+</html>
