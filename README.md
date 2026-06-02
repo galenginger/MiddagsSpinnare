@@ -1,3 +1,5 @@
+ ### https://github.com/galenginger/MiddagsSpinnare ###
+ 
  # Middagsspinnaren
 
   En webbsida där du lägger till egna måltider och snurrar ett hjul
@@ -98,3 +100,4 @@
   - Arrayer och loopar - meals-array med for-loopar i showList() och drawWheel()
   - DOM-manipulation - createElement, style, classList och innerHTML i script.js
 
+ ### https://github.com/galenginger/MiddagsSpinnare ###
