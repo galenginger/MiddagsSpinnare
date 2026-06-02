@@ -50,6 +50,48 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  let currentAngle = 0
+  let isSpinning = false
+
+  // Snurrar hjulet i 5-6 sekunder med sakta inbromsning
+  function spin() {
+    if (isSpinning) return
+
+    isSpinning = true
+    document.getElementById("spin-button").disabled = true
+
+    let startAngle = currentAngle
+    let totalRotation = 1440 + Math.random() * 360  // 4-5 hela varv plus slump
+    let duration = 5000 + Math.random() * 1000      // 5-6 sekunder i millisekunder
+    let startTime = null
+
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp
+
+      let elapsed = timestamp - startTime
+      let progress = Math.min(elapsed / duration, 1)
+
+      // progress går linjärt 0->1, men eased rusar snabbt och kryper in i slutet
+      // vid 50% tid är redan 87.5% av rotationen klar.
+      //(Fick ta lite AI/google hjälp)
+      let eased = 1 - Math.pow(1 - progress, 3)
+
+      currentAngle = startAngle + totalRotation * eased
+      document.getElementById("wheel").style.transform = "rotate(" + currentAngle + "deg)"
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      } else {
+        isSpinning = false
+        document.getElementById("spin-button").disabled = false
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }
+
+  document.getElementById("spin-button").addEventListener("click", spin)
+
   // Lyssnar på formuläret när användaren lägger till en måltid
   document.getElementById("meal-form").addEventListener("submit", function(e) {
     e.preventDefault()
