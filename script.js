@@ -15,6 +15,15 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let i = 0; i < meals.length; i++) {
       let item = document.createElement("li")
       item.textContent = meals[i]
+
+      let removeButton = document.createElement("button")
+      removeButton.textContent = "X"
+      removeButton.addEventListener("click", function() {
+        meals.splice(i, 1)
+        showList()
+      })
+
+      item.appendChild(removeButton)
       list.appendChild(item)
     }
 
@@ -60,6 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
     isSpinning = true
     document.getElementById("spin-button").disabled = true
 
+    // Nollställ resultatet från föregående snurrning
+    let resultDiv = document.getElementById("result")
+    resultDiv.textContent = ""
+    resultDiv.className = ""
+
     let startAngle = currentAngle
     let totalRotation = 1440 + Math.random() * 360  // 4-5 hela varv plus slump
     let duration = 5000 + Math.random() * 1000      // 5-6 sekunder i millisekunder
@@ -84,10 +98,22 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         isSpinning = false
         document.getElementById("spin-button").disabled = false
+        showWinner()
       }
     }
 
     requestAnimationFrame(animate)
+  }
+
+  // Räknar ut vilket segment pilen pekar på och visar vinnaren
+  function showWinner() {
+    let segmentSize = 360 / meals.length
+    let normalized = ((currentAngle % 360) + 360) % 360
+    let winnerIndex = Math.floor((360 - normalized) % 360 / segmentSize) % meals.length
+
+    let resultDiv = document.getElementById("result")
+    resultDiv.textContent = "Ikväll äter vi: " + meals[winnerIndex] + "!"
+    resultDiv.classList.add("show-result")
   }
 
   document.getElementById("spin-button").addEventListener("click", spin)
