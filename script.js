@@ -1,5 +1,5 @@
 // Väntar tills hela DOM:en är inläst innan koden körs
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
 
   // En array som håller alla måltider
   let meals = ["Pizza", "Pasta", "Tacos"]
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       let removeButton = document.createElement("button")
       removeButton.textContent = "X"
-      removeButton.addEventListener("click", function() {
+      removeButton.addEventListener("click", function () {
         meals.splice(i, 1)
         showList()
       })
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("spin-button").addEventListener("click", spin)
 
   // Lyssnar på formuläret när användaren lägger till en måltid
-  document.getElementById("meal-form").addEventListener("submit", function(e) {
+  document.getElementById("meal-form").addEventListener("submit", function (e) {
     e.preventDefault()
 
     let input = document.getElementById("meal-input")
